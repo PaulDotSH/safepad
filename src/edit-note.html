@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safepad</title>
+    <script type="module" src="/marked.min.js" defer></script>
+    <script type="module" src="/edit-note.js" defer></script>
+  </head>
+
+  <body id="body">
+    <div id="container" class="container">
+        <div class="header">
+            <button onclick="location.href='/show-notes.html'" type="button">
+                Back</button>
+            <button id="save-button">Save</button>
+            <button id="delete-button">Delete</button>
+
+        </div>
+        <input id="title-input">
+        <textarea id="content-input"></textarea>
+        <!-- TODO: Change this -->
+        <input type="" id="tags-input">
+        <div id="preview"></div>
+
+    </div>
+
+  </body>
+</html>
