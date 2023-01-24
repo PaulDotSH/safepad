@@ -144,7 +144,7 @@ async fn main() {
     // TODO: Check if surreal is already started
     start_surreal_db(&DB_PASSWORD).unwrap();
 
-    DB.connect::<Ws>("localhost:8000").await.unwrap();
+    DB.connect::<Ws>("localhost:1312").await.unwrap();
 
     DB.signin(Root {
         username: "safepad",
@@ -334,8 +334,9 @@ fn generate_random_str(length: usize) -> String {
 }
 
 // We start the surreal db instance in memory to protect the data (nothing is saved on the disk)
+//TODO: make a config and use a default port, changeable in the config
 fn start_surreal_db(password: &str) -> Result<Child, anyhow::Error> {
-    Ok(Command::new(format!("surreal")).args(["start", "--user", "safepad", "--pass", password, "memory"]).spawn()?)
+    Ok(Command::new(format!("surreal")).args(["start", "--user", "safepad", "--pass", password, "--bind", "0.0.0.0:1312", "memory"]).spawn()?)
 }
 
 #[derive(Debug, Serialize, Deserialize)]
